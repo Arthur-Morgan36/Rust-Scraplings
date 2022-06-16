@@ -27,7 +27,7 @@ fn rgb_to_cmyk(rgb: Vec<u8>) -> CMYK {
         };
     }
 
-    let div_rgb: Vec<f32> = rgb.into_iter().map(|x| x as f32 / 255 as f32).collect();
+    let div_rgb: Vec<f32> = rgb.into_iter().map(|x| x as f32 / 255_f32).collect();
     let key: f32 = 1_f32 - max(&div_rgb);
 
     let calc = |val: &f32| (1_f32 - val - &key) / (1_f32 - &key);
