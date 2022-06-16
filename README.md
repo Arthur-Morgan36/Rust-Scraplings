@@ -1,9 +1,10 @@
 # rust_scraplings
 
 ## Concept
-This repo is dedicated for me to share what I call my "Rust Scraplings" since the Rust files consist of small functions that have no correlation with each others.
+This repo is dedicated for me to share what I call my "Rust Scraplings" since the Rust files consist of small functions that have no correlation with each other.
 This is mainly meant to be used as a way for me to track my progress throughout my years of writing Rust code.
-You **shouldn't** grab anything from here and use it in your own project as there's a very high chance there's a faster, more efficient and concise way of accomplishing what I did.
+
+You **shouldn't** grab anything from here and use it in your own project as there's a very high chance there's a faster, more efficient and concise way of accomplishing the said task.
 
 ## Other
 *Well why didn't you make it private if it's just for you to track your progress?*
