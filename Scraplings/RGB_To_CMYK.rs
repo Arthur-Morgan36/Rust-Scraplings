@@ -32,15 +32,15 @@ fn rgb_to_cmyk(rgb: Vec<u8>) -> CMYK {
     }
 
     let div_rgb: Vec<f32> = rgb.into_iter().map(|x| x as f32 / 255 as f32).collect();
-    let key: f32 = 1f32 - max(&div_rgb);
+    let key: f32 = 1_f32 - max(&div_rgb);
 
-    let calc = |val: &f32| (1 as f32 - val - &key) / (1 as f32 - &key);
+    let calc = |val: &f32| (1_f32 - val - &key) / (1_f32 - &key);
 
     return CMYK {
-        c: (calc(&div_rgb[0]) * 100f32).round() as u8,
-        m: (calc(&div_rgb[1]) * 100f32).round() as u8,
-        y: (calc(&div_rgb[2]) * 100f32).round() as u8,
-        k: (key * 100f32).round() as u8,
+        c: (calc(&div_rgb[0]) * 100_f32).round() as u8,
+        m: (calc(&div_rgb[1]) * 100_f32).round() as u8,
+        y: (calc(&div_rgb[2]) * 100_f32).round() as u8,
+        k: (key * 100_f32).round() as u8,
     };
 }
 

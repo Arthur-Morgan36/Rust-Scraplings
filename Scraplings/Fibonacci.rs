@@ -1,6 +1,10 @@
-fn generate_fibonacci_sequence(number_of_terms: usize) -> Vec<u16> {
-    if number_of_terms == 0 { return vec![] };
-    if number_of_terms == 1 { return vec![0] };
+fn gen_fibonacci_sequence(number_of_terms: usize) -> Vec<u32> {
+    if number_of_terms == 0 {
+        return vec![];
+    };
+    if number_of_terms == 1 {
+        return vec![0];
+    };
 
     let mut initial_vec: Vec<u16> = vec![0, 1];
 
@@ -12,6 +16,6 @@ fn generate_fibonacci_sequence(number_of_terms: usize) -> Vec<u16> {
 }
 
 fn main() {
-    let ten_first_items: Vec<u16> = generate_fibonacci_sequence(10);
+    let ten_first_items: Vec<u32> = gen_fibonacci_sequence(10);
     println!("Sequence: {:?}", ten_first_items);
 }
