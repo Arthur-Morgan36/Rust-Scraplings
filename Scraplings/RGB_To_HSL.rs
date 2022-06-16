@@ -1,9 +1,9 @@
 #[allow(dead_code)]
 #[derive(Debug)]
 struct HSL {
-    hue: u8,
-    saturation: u8,
-    luminosity: u8,
+    hue: u16,
+    saturation: u16,
+    luminosity: u16,
 }
 
 fn max<T: std::cmp::PartialOrd + Copy>(vec: &Vec<T>) -> &T {
@@ -36,7 +36,7 @@ fn rgb_to_hsl(rgb: Vec<u8>) -> HSL {
         return HSL {
             hue: 0,
             saturation: 0,
-            luminosity: luminosity as u8,
+            luminosity: luminosity as u16,
         };
     }
 
@@ -53,20 +53,20 @@ fn rgb_to_hsl(rgb: Vec<u8>) -> HSL {
         &_ => 0_f32,
     };
 
-    hue = if hue < 0_f32 {
-        (hue * 60_f32).round() + 360_f32
+    if hue < 0_f32 {
+        hue = (hue * 60_f32).round() + 360_f32
     } else {
-        hue * 60_f32
+        hue = (hue * 60_f32).round()
     };
 
     return HSL {
-        hue: hue as u8,
-        saturation: saturation as u8,
-        luminosity: luminosity as u8,
+        hue: hue as u16,
+        saturation: saturation as u16,
+        luminosity: luminosity as u16,
     };
 }
 
 fn main() {
-    let rgb: Vec<u8> = vec![250, 243, 226];
+    let rgb: Vec<u8> = vec![80, 5, 90];
     println!("{:?}", rgb_to_hsl(rgb));
 }
