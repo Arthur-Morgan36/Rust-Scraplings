@@ -9,13 +9,9 @@ struct CMYK {
 
 fn max<T: std::cmp::PartialOrd + Copy>(vec: &Vec<T>) -> &T {
     let mut max: &T = &vec[0];
-    for i in 1..vec.len() {
-        if i > 0 {
-            if vec[i] > vec[i - 1] {
-                max = &vec[i]
-            } else {
-                max = &vec[i - 1]
-            }
+    for item in vec {
+        if item > max {
+            max = item;
         }
     }
     return max;
