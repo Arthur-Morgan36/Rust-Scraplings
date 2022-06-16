@@ -68,5 +68,5 @@ fn rgb_to_hsl(rgb: Vec<u8>) -> HSL {
 
 fn main() {
     let rgb: Vec<u8> = vec![80, 5, 90];
-    println!("{:?}", rgb_to_hsl(rgb));
+    println!("{:#?}", rgb_to_hsl(rgb));
 }
