@@ -37,7 +37,7 @@ fn create_hash_map(key_array: HashArray, value_array: HashArray) -> DictHash {
 fn encode(str: &str) -> String {
     let char_hash = create_hash_map(CHARS, MORSE);
     let mut encoded_morse = String::new();
-    let mut unknown_chars: String = String::new();
+    let mut unknown_chars = String::new();
 
     for letter in str.to_lowercase().chars() {
         let hash_key = char_hash.get(letter.to_string().as_str());
@@ -65,7 +65,7 @@ fn encode(str: &str) -> String {
 fn decode(str: &str) -> String {
     let morse_hash = create_hash_map(MORSE, CHARS);
     let mut decoded_morse = String::new();
-    let mut unknown_morse: String = String::new();
+    let mut unknown_morse = String::new();
 
     for morse_c in str.replace("_", "-").split(" ") {
         let hash_key = morse_hash.get(morse_c.to_string().as_str());
