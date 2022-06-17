@@ -8,8 +8,8 @@
 
 use std::collections::HashMap;
 
-const AMOUNT_OF_CHARS: usize = 41;
-type HashArray = [&'static str; AMOUNT_OF_CHARS];
+const SUPPORTED_CHARACTERS_COUNT: usize = 41;
+type HashArray = [&'static str; SUPPORTED_CHARACTERS_COUNT];
 
 const CHARS: HashArray = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i",
@@ -29,7 +29,7 @@ type DictHash = HashMap<&'static str, &'static str>;
 fn create_hash_map(key_array: HashArray, value_array: HashArray) -> DictHash {
     let mut hash = HashMap::new();
 
-    for i in 0..AMOUNT_OF_CHARS {
+    for i in 0..SUPPORTED_CHARACTERS_COUNT {
         hash.insert(key_array[i], value_array[i]);
     }
 
