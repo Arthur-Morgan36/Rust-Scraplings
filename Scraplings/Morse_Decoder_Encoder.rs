@@ -1,5 +1,3 @@
-// * think of match in a for loop and add the results to a string
-
 /*
     The code is pretty much done lmao this took way less time than I thought.
     todo: Add support for all the punctuation cited at this link:
@@ -8,8 +6,8 @@
 
 use std::collections::HashMap;
 
-const SUPPORTED_CHARACTERS_COUNT: usize = 41;
-type HashArray = [&'static str; SUPPORTED_CHARACTERS_COUNT];
+const SUPPORTED_CHARS_COUNT: usize = 41;
+type HashArray = [&'static str; SUPPORTED_CHARS_COUNT];
 
 const CHARS: HashArray = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i",
@@ -29,7 +27,7 @@ type DictHash = HashMap<&'static str, &'static str>;
 fn create_hash_map(key_array: HashArray, value_array: HashArray) -> DictHash {
     let mut hash = HashMap::new();
 
-    for i in 0..SUPPORTED_CHARACTERS_COUNT {
+    for i in 0..SUPPORTED_CHARS_COUNT {
         hash.insert(key_array[i], value_array[i]);
     }
 
@@ -58,7 +56,7 @@ fn encode(str: &str) -> String {
     };
 
     if encoded_morse.trim().is_empty() {
-        return String::from("All characters from the inputted string were unknown.");
+        return String::from("All characters from the inputted string were unknown to be encoded.");
     }
 
     return String::from("Encoded String: ") + &encoded_morse;
@@ -66,13 +64,12 @@ fn encode(str: &str) -> String {
 
 fn decode(str: &str) -> String {
     let morse_hash = create_hash_map(MORSE, CHARS);
-    let mut encoded_morse = String::new();
+    let mut decoded_morse = String::new();
     let mut unknown_morse: String = String::new();
 
-    // In case I can't loop over a Splitter just add a collect
     for morse_c in str.replace("_", "-").split(" ") {
         let hash_key = morse_hash.get(morse_c.to_string().as_str());
-        encoded_morse += &hash_key.unwrap_or(&"");
+        decoded_morse += &hash_key.unwrap_or(&"");
 
         if let None = hash_key {
             unknown_morse += morse_c;
@@ -81,20 +78,20 @@ fn decode(str: &str) -> String {
 
     if !unknown_morse.is_empty() {
         println!(
-            "The following morse code was removed during decoding as they were unknown:\n{}\n",
+            "The following morse code was removed during decoding as it was not recognized:\n{}\n",
             unknown_morse
         );
     }
 
-    if encoded_morse.trim().is_empty() {
-        return String::from("All characters from the inputted morse code are unknown.");
+    if decoded_morse.trim().is_empty() {
+        return String::from("All of the inputted morse code was not recognized to be decoded.");
     }
 
-    return String::from("Decoded String: ") + &encoded_morse;
+    return String::from("Decoded String: ") + &decoded_morse;
 }
 
 fn main() {
-    let char_str: &str = "BHENCHTTTD";
-    let morse_str: &str = "_... .... . _. _._. .... _ _ _ _..";
+    let char_str: &str = "Hello world!";
+    let morse_str: &str = "brr";
     println!("{}\n{}", encode(char_str), decode(morse_str));
 }
